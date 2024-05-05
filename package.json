@@ -1,0 +1,24 @@
+{
+  "name": "amazon-price-tracker",
+  "version": "1.0.0",
+  "description": "A JavaScript project to calculate total price and item count in Amazon shopping lists",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meganle414/amazon-price-tracker.git"
+  },
+  "author": "Megan Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meganle414/amazon-price-tracker/issues"
+  },
+  "homepage": "https://github.com/meganle414/amazon-price-tracker#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^22.7.1",
+    "selenium-webdriver": "^4.20.0"
+  }
+}
