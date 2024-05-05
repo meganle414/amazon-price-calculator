@@ -17,5 +17,11 @@
           "mac": "Command+Shift+Y"
         }
       }
-    }
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.amazon.com/*"],
+        "js": ["popup.js"]
+      }
+    ]
   }

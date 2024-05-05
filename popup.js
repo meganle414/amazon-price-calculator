@@ -6,15 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("result-container").innerText = url;
 
     // const items = document.getElementById("g-items");
-    // const items = document.querySelectorAll("[data-price]");
-    const items = document.getElementById('g-items')
+    const items = document.querySelectorAll(".a-price");
     
     items.forEach((item) => {
-      const price = item.getAttribute('data-price');
-      console.log(price);
+      console.log(item.innerHTML);
+      // const price = item.getAttribute('data-price');
+      // console.log(price);
     });
-
-    console.log(items);
+    
+    console.log("Items: ", items);
     
     // Check if the URL is an Amazon item list page
     // if (url.includes("amazon.com") && (url.includes("/wishlist") || url.includes("/registry") || url.includes("/baby-reg") || url.includes("/registries"))) {
