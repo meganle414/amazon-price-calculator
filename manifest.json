@@ -10,6 +10,10 @@
       "default_title": "Amazon Price Tracker",
       "default_popup": "popup.html"
     },
+    "background": {
+      "service": "background.js",
+      "type": "module"
+    },
     "commands": {
       "_execute_action": {
         "suggested_key": {
@@ -17,11 +21,5 @@
           "mac": "Command+Shift+Y"
         }
       }
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://www.amazon.com/*"],
-        "js": ["contentScript.js"]
-      }
-    ]
+    }
   }

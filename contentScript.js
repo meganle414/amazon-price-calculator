@@ -1,12 +1,11 @@
 function scrapeAmazonPrices() {
-    // Same code as before, but without the browser launch and page navigation
     const prices = [];
     let totalPrice = 0;
   
     // Get the HTML content
     const html = document.documentElement.outerHTML;
   
-    // Parse the HTML using cheerio (similar to BeautifulSoup)
+    // Parse the HTML using cheerio
     const $ = cheerio.load(html);
   
     $('span.a-price').each((index, element) => {

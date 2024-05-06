@@ -18,6 +18,7 @@
   "homepage": "https://github.com/meganle414/amazon-price-tracker#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
+    "cheerio-without-node-native": "^0.20.2",
     "puppeteer": "^22.7.1",
     "selenium-webdriver": "^4.20.0"
   }

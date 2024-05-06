@@ -1,4 +1,3 @@
-// amazon-wishlist-scrape.js
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 
@@ -18,7 +17,7 @@ async function main() {
   // get the HTML content
   const html = await page.content();
 
-  // parse the HTML using cheerio (similar to BeautifulSoup)
+  // parse the HTML using cheerio
   const $ = cheerio.load(html);
 
   $('span.a-price').each((index, element) => {
