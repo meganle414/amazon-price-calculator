@@ -11,3 +11,17 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     }
   }
 });
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.active) {
+    chrome.tabs.sendMessage(tabId, { action: 'calculate', url: tab.url }, (response) => {
+      if (response.error) {
+        console.error(response.error);
+      } else {
+        const result = response.result;
+        document.getElementById("item-count-container").innerHTML = `Count: ${result.itemCount}`;
+        document.getElementById("total-price-container").innerHTML = `Total Price: $${result.totalPrice}`;
+      }
+    });
+  }
+});

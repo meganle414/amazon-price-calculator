@@ -23,10 +23,7 @@
 // const cheerio = require('cheerio')
 
 document.addEventListener("DOMContentLoaded", function () {
-  //...
-
-  const calculateButton = document.getElementById('calculate-button');
-  calculateButton.addEventListener('click', async () => {
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       const activeTab = tabs[0];
       const url = activeTab.url;
