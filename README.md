@@ -27,9 +27,13 @@
 * CSS
 * Express JS
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Amazon Price Calculator
 
 Open Google Chrome Extension by clicking on the icon or using the Shortcut (Windows: CTRL + SHIFT + Y; Mac: CMD + SHIFT + Y)<br>
+Note: Express.js server must be running for the Google Chrome Extension to work
+
 [Video Tutorial](https://github.com/meganle414/amazon-price-calculator/assets/66089268/4a0f473f-7d8e-41b9-8b03-6f02205cd12c)<br>
 ![Screenshot](https://github.com/meganle414/amazon-price-calculator/blob/main/images/extension.png?raw=true)
 
@@ -47,3 +51,5 @@ Email: meganle414@gmail.com
 Project Link: [https://github.com/meganle414/amazon-price-calculator](https://github.com/meganle414/amazon-price-calculator)
 
 [linkedin-url]: https://linkedin.com/in/meganle414/
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
