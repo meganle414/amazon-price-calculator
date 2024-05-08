@@ -3,7 +3,7 @@
     "name": "Amazon Price Tracker",
     "version": "1.0",
     "description": "A Chrome extension to calculate total price and item count in Amazon shopping lists",
-    "permissions": ["activeTab", "tabs", "scripting"],
+    "permissions": ["activeTab", "tabs"],
     "host_permissions": ["*://*/*"],
     "background": {
       "service_worker": "background.js"
@@ -20,14 +20,5 @@
           "mac": "Command+Shift+Y"
         }
       }
-    },
-    "content_security_policy": {
-      "extension_pages": "script-src 'self'; object-src 'self'"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://*/*"],
-        "js": ["contentScript.js"]
-      }
-    ]
+    }
   }

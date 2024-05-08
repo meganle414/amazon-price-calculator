@@ -28,6 +28,18 @@
 * CSS
 * Express JS
 
+### Amazon Price Calculator
+
+Open Google Chrome Extension by clicking on the icon or using the Shortcut (Windows: CTRL + SHIFT + Y; Mac: CMD + SHIFT + Y)<br>
+[Video Tutorial]()
+![Screenshot](https://github.com/meganle414/amazon-price-calculator/blob/main/images/extension.png?raw=true)
+
+Express.js server is run using
+```node calculate.js```
+which returns a JSON response to the extension with the total item count and total price of all the items in the list
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- CONTACT -->
 ## Contact
 
