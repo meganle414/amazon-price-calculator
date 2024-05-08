@@ -19,7 +19,6 @@
 * A Chrome extension to calculate total price and item count in Amazon shopping lists
 
 <img src="images/extension.png">
-<img src="images/results.png">
 
 ### Built With
 
@@ -31,7 +30,7 @@
 ### Amazon Price Calculator
 
 Open Google Chrome Extension by clicking on the icon or using the Shortcut (Windows: CTRL + SHIFT + Y; Mac: CMD + SHIFT + Y)<br>
-[Video Tutorial]()
+[Video Tutorial](https://github.com/meganle414/amazon-price-calculator/assets/66089268/4a0f473f-7d8e-41b9-8b03-6f02205cd12c)
 ![Screenshot](https://github.com/meganle414/amazon-price-calculator/blob/main/images/extension.png?raw=true)
 
 Express.js server is run using
