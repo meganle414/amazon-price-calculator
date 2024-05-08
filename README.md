@@ -18,8 +18,8 @@
 
 * A Chrome extension to calculate total price and item count in Amazon shopping lists
 
-<img src="images/extension.png" width="300">
-<img src="images/results.png" width="300">
+<img src="images/extension.png">
+<img src="images/results.png">
 
 ### Built With
 
