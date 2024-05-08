@@ -1,0 +1,9 @@
+{
+    "name": "com.example.scraper",
+    "description": "Scrape web pages with Puppeteer",
+    "path": "scraper.js",
+    "type": "stdio",
+    "allowed_origins": [
+      "chrome-extension://<your-extension-id>"
+    ]
+  }

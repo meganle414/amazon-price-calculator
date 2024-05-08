@@ -3,7 +3,8 @@ const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 
 const app = express();
-
+const cors = require('cors');
+app.use(cors);
 app.use(express.json());
 
 app.post('/calculate', async (req, res) => {
@@ -36,6 +37,7 @@ app.post('/calculate', async (req, res) => {
     };
 
     console.log('Sending response:', result);
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json(result);
     console.log('Response sent');
 

@@ -1,19 +1,28 @@
-// scraper.js
-// Find all the items on the page and extract the prices
-const items = document.querySelectorAll("span.a-list-item");
-const prices = [];
+// const { spawn } = require('child_process');
 
-items.forEach((item) => {
-  const price = item.querySelector("span.a-price");
-  if (price) {
-    prices.push(price.innerText);
-  }
-});
+// const calculate = (url) => {
+//   return new Promise((resolve, reject) => {
+//     const subprocess = spawn('node', ['scraper.js', url]);
 
-console.log(prices)
+//     subprocess.stdout.on('data', (data) => {
+//       const result = JSON.parse(data.toString());
+//       resolve(result);
+//     });
 
-// // Send the extracted prices back to the popup.js script
-// chrome.runtime.sendMessage({ prices: prices });
+//     subprocess.stderr.on('data', (data) => {
+//       reject(new Error(data.toString()));
+//     });
 
-// Send the extracted prices back to the popup.js script
-chrome.runtime.sendMessage({ action: "extractPrices", prices: prices });
+//     subprocess.on('close', (code) => {
+//       if (code !== 0) {
+//         reject(new Error(`Child process exited with code ${code}`));
+//       }
+//     });
+//   });
+// };
+
+// process.stdin.on('data', async (data) => {
+//   const url = data.toString().trim();
+//   const result = await calculate(url);
+//   process.stdout.write(JSON.stringify(result));
+// });

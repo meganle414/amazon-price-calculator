@@ -1,49 +1,112 @@
-// const messageListener = (request, sender, sendResponse) => {
-//   if (request.action === "updatePrices") {
-//     const itemCountContainer = document.getElementById("item-count-container");
-//     const resultContainer = document.getElementById("result-container");
-
-//     itemCountContainer.textContent = `Count: ${request.prices.length}`;
-//     resultContainer.textContent = `Total Price: $${request.totalPrice.toFixed(2)}`;
-//   }
-// };
-
-// // Check if the listener is already defined before adding a new listener
-// if (!chrome.runtime.onMessage.hasListener(messageListener)) {
-//   chrome.runtime.onMessage.addListener(messageListener);
-// }
-// if (request.action === "updatePrices") {
-//   const itemCountContainer = document.getElementById("item-count-container");
-//   const resultContainer = document.getElementById("result-container");
-
-//   itemCountContainer.textContent = `Count: ${request.prices.length}`;
-//   resultContainer.textContent = `Total Price: $${request.totalPrice.toFixed(2)}`;
-// }
-
-// const cheerio = require('cheerio')
-
 document.addEventListener("DOMContentLoaded", function () {
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
-      const activeTab = tabs[0];
-      const url = activeTab.url;
-      chrome.runtime.sendMessage({ action: 'calculate', url }, (response) => {
-        if (response.error) {
-          console.error(response.error);
-        } else {
-          const result = response.result;
-          document.getElementById("item-count-container").innerHTML = `Count: ${result.itemCount}`;
-          document.getElementById("total-price-container").innerHTML = `Total Price: $${result.totalPrice}`;
-        }
-      });
-    });
-
-    // Update the shortcut text dynamically
-    const shortcutHelp = document.getElementById("shortcut-help");
-    const shortcut = navigator.platform.includes("Mac")? "Cmd+Shift+Y" : "Ctrl+Shift+Y";
-    shortcutHelp.querySelector("#shortcut").innerText = shortcut;
-  });
+  updateResultContainer();
+  updateShortcutText();
+  listenForMessages();
 });
+
+function updateResultContainer() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    const activeTab = tabs[0];
+    const tabId = activeTab.id;
+    const url = activeTab.url;
+    document.getElementById("result-container").innerText = url;
+    console.log("Send");
+    chrome.runtime.sendMessage({ action: 'getResults', url })
+  });
+}
+
+// function handleResponse(response) {
+//   if (response && response.title) {
+//     console.log("Recv response = " + response.title);
+//     document.getElementById("total-price-container").innerText = response.url;
+//   } else {
+//     console.error("Invalid response received");
+//   }
+// }
+
+function updateShortcutText() {
+  const shortcutHelp = document.getElementById("shortcut-help");
+  const shortcut = navigator.platform.includes("Mac")? "Cmd+Shift+Y" : "Ctrl+Shift+Y";
+  shortcutHelp.querySelector("#shortcut").innerText = shortcut;
+}
+
+function listenForMessages() {
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.log("Recv. Send response = " + request.result);
+    if (request.result === 'showResults') {
+      const result = request.result;
+      document.getElementById("item-count-container").innerHTML = `Count: ${result.itemCount}`;
+      document.getElementById("total-price-container").innerHTML = `Total Price: $${result.totalPrice}`;
+    }
+  }
+);
+}
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Get the active tab's URL and update the result container
+//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+//     const activeTab = tabs[0];
+//     const url = activeTab.url;
+//     document.getElementById("result-container").innerText = url;
+//   });
+
+//   // Update the shortcut text dynamically
+//   const shortcutHelp = document.getElementById("shortcut-help");
+//   const shortcut = navigator.platform.includes("Mac")? "Cmd+Shift+Y" : "Ctrl+Shift+Y";
+//   shortcutHelp.querySelector("#shortcut").innerText = shortcut;
+
+//   chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+//     const activeTab = tabs[0];
+//     const url = activeTab.url;
+//     console.log('Sending message to calculate');
+//     console.log('URL: ', url);
+//     const port = chrome.tabs.connect(activeTab.id, { name: 'parseHtml' });
+//     port.onMessage.addListener((response) => {
+//       console.log('Results: ', response);
+//       itemCount = response.result.itemCount;
+//       console.log('Item Count: ', itemCount);
+//     });
+
+//     const script = document.createElement('script');
+//     script.src = chrome.runtime.getURL('contentScript.js');
+//     script.onload = () => {
+//       port.postMessage({ action: 'parseHtml' });
+//     };
+//     document.head.appendChild(script);
+//   });
+// });
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Update the shortcut text dynamically
+//   const shortcutHelp = document.getElementById("shortcut-help");
+//   const shortcut = navigator.platform.includes("Mac")? "Cmd+Shift+Y" : "Ctrl+Shift+Y";
+//   shortcutHelp.querySelector("#shortcut").innerText = shortcut;
+
+//   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//     console.log('Received message:', request);
+//     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+//       const activeTab = tabs[0];
+//       const url = activeTab.url;
+//       document.getElementById("result-container").innerText = url;
+//       chrome.runtime.sendMessage({ action: 'calculate', url }, (response) => {
+//         if (response.error) {
+//           console.error(response.error);
+//         } else {
+//           const result = response.result;
+//           document.getElementById("item-count-container").innerHTML = `Count: ${result.itemCount}`;
+//           document.getElementById("total-price-container").innerHTML = `Total Price: $${result.totalPrice}`;
+
+//           // // Update the shortcut text dynamically
+//           // const shortcutHelp = document.getElementById("shortcut-help");
+//           // const shortcut = navigator.platform.includes("Mac")? "Cmd+Shift+Y" : "Ctrl+Shift+Y";
+//           // shortcutHelp.querySelector("#shortcut").innerText = `Shortcut: ${shortcut}`;
+//         }
+//       });
+//     });
+//   });
+// });
 
 // function scrapeAmazonPrices() {
 //   const prices = [];
