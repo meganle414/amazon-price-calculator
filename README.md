@@ -27,7 +27,7 @@
 * CSS
 * Express JS
 
-<p align="right">(<a href="#amazon-price-calculator">back to top</a>)</p>
+<p align="right">(<a href="#readme-ov-file#amazon-price-calculator">back to top</a>)</p>
 
 ### Amazon Price Calculator
 
@@ -41,7 +41,7 @@ Express.js server is run using
 ```node calculate.js```
 which returns a JSON response to the extension with the total item count and total price of all the items in the list
 
-<p align="right">(<a href="amazon-price-calculator">back to top</a>)</p>
+<p align="right">(<a href="#readme-ov-file#amazon-price-calculator">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
@@ -52,4 +52,4 @@ Project Link: [https://github.com/meganle414/amazon-price-calculator](https://gi
 
 [linkedin-url]: https://linkedin.com/in/meganle414/
 
-<p align="right">(<a href="amazon-price-calculator">back to top</a>)</p>
+<p align="right">(<a href="#readme-ov-file#amazon-price-calculator">back to top</a>)</p>
