@@ -34,7 +34,7 @@
 Open Google Chrome Extension by clicking on the icon or using the Shortcut (Windows: CTRL + SHIFT + Y; Mac: CMD + SHIFT + Y)<br>
 Note: Express.js server must be running for the Google Chrome Extension to work
 
-[Video Tutorial](https://github.com/meganle414/amazon-price-calculator/assets/66089268/4a0f473f-7d8e-41b9-8b03-6f02205cd12c)<br>
+[Video Tutorial](https://github.com/meganle414/amazon-price-calculator/assets/66089268/427ab79b-6734-48cc-af98-a94fbd16289a)<br>
 ![Screenshot](https://github.com/meganle414/amazon-price-calculator/blob/main/images/extension.png?raw=true)
 
 Express.js server is run using
