@@ -26,6 +26,8 @@
 * HTML
 * CSS
 * Express JS
+* Puppeteer
+* Cheerio
 
 <p align="right">(<a href="#amazon-price-calculator">back to top</a>)</p>
 
