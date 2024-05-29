@@ -12,9 +12,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
      .then((response) => response.json())
      .then((data) => {
         chrome.runtime.sendMessage({ action: 'showResults', results: data });
+        sendResponse();
       })
      .catch((error) => {
         console.error('Error fetching results:', error);
+        sendResponse({ error: 'Failed to fetch results' });
       });
+
+      // Return true to indicate that sendResponse() will be called asynchronously
+      return true;
   }
 });
