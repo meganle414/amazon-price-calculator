@@ -46,7 +46,8 @@ const scrapeAmazon = async (url) => {
 };
 
 app.get('/', (req, res) => {
-  res.status(500).json({ error: 'Hello World' });
+  const url = req.body.url;
+  res.status(500).json({ error: `url is ${url}` });
 });
 
 app.post('/calculate', async (req, res) => {
