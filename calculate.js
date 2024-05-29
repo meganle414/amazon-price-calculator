@@ -45,6 +45,11 @@ const scrapeAmazon = async (url) => {
   return { prices, imageUrls, titles, urls };
 };
 
+app.get('/', (req, res) => {
+  // Send the HTML file as the response
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app.post('/calculate', async (req, res) => {
   try {
     const url = req.body.url;
