@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 
 const app = express();
+const port = process.env || 3000;
 app.use(express.json());
 
 const scrapeAmazon = async (url) => {
@@ -48,7 +49,6 @@ app.post('/calculate', async (req, res) => {
   try {
     const url = req.body.url;
     const { prices, imageUrls, titles, urls } = await scrapeAmazon(url);
-    // const historicalPrices = await scrapeCamelCamelCamel(urls);
 
     const result = {
       itemCount: prices.length,
@@ -57,7 +57,6 @@ app.post('/calculate', async (req, res) => {
       imageUrls,
       urls,
       titles,
-      // historicalPrices,
     };
 
     console.log('Sending response:', result);
@@ -71,6 +70,6 @@ app.post('/calculate', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
