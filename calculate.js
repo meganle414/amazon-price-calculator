@@ -64,6 +64,7 @@ app.post('/calculate', async (req, res) => {
       titles,
     };
 
+    res.status(300).json({ error: `CALCULATE url is ${url}` });
     // console.log('Sending response:', result);
     res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json(result);
