@@ -44,38 +44,6 @@ const scrapeAmazon = async (url) => {
   return { prices, imageUrls, titles, urls };
 };
 
-// const scrapeCamelCamelCamel = async (urls) => {
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-
-//   const historicalPrices = [];
-//   for (const url of urls) {
-//     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3');
-//     await page.goto(`https://camelcamelcamel.com/`);
-//     // Print the HTML content of the page
-//     console.log(await page.content());
-//     await page.type('#sq', url);
-//     await page.click('button[value="Search"]');
-//     await page.waitForSelector('.grid-x');
-
-//     const html = await page.content();
-//     const $ = cheerio.load(html);
-
-//     const amazonRow = $('tr.pt.amazon').first();
-//     const lowestEver = amazonRow.find('td:nth-child(2)').text().trim();
-    
-//     if (lowestEver === '') {
-//       lowestEver = 0;
-//     }
-
-//     historicalPrices.push(lowestEver);
-//   }
-
-//   await browser.close();
-
-//   return historicalPrices;
-// };
-
 app.post('/calculate', async (req, res) => {
   try {
     const url = req.body.url;
