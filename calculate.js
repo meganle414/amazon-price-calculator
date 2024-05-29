@@ -46,11 +46,11 @@ const scrapeAmazon = async (url) => {
 };
 
 app.get('/', (req, res) => {
-  const url = req.body.url;
-  res.status(500).json({ error: `url is ${url}` });
+  res.status(200).json({ message: 'OK' });
 });
 
 app.post('/calculate', async (req, res) => {
+  console.log('Received request:', req.body);
   try {
     const url = req.body.url;
     const { prices, imageUrls, titles, urls } = await scrapeAmazon(url);
@@ -64,7 +64,6 @@ app.post('/calculate', async (req, res) => {
       titles,
     };
 
-    res.status(300).json({ error: `CALCULATE url is ${url}` });
     // console.log('Sending response:', result);
     res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json(result);
