@@ -59,7 +59,7 @@ app.post('/calculate', async (req, res) => {
       titles,
     };
 
-    console.log('Sending response:', result);
+    // console.log('Sending response:', result);
     res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json(result);
     console.log('Response sent');
