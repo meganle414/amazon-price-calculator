@@ -46,8 +46,7 @@ const scrapeAmazon = async (url) => {
 };
 
 app.get('/', (req, res) => {
-  // Send the HTML file as the response
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.status(500).json({ error: 'Hello World' });
 });
 
 app.post('/calculate', async (req, res) => {
