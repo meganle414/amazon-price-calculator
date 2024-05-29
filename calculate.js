@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/calculate', async (req, res) => {
-  console.log('Received request:', req.body);
+  console.log('Received request: ', req.body);
   try {
     const url = req.body.url;
     const { prices, imageUrls, titles, urls } = await scrapeAmazon(url);
