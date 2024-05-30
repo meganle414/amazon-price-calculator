@@ -22,7 +22,7 @@ const scrapeAmazon = async (url) => {
     const page = await browser.newPage();
     await page.goto(url);
 
-    // await autoScroll(page);
+    await autoScroll(page);
 
     const html = await page.content();
     const $ = cheerio.load(html);
