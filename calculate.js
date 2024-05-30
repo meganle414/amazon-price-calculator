@@ -14,8 +14,11 @@ const scrapeAmazon = async (url) => {
     headless: true,
     chrome_revision: '125.0.6422.112', // specify the Chrome version
   });
-  const page = await browser.newPage();
+  try {
+    const page = await browser.newPage();
   await page.goto(url);
+
+  await autoScroll(page);
 
   const html = await page.content();
   const $ = cheerio.load(html);
@@ -45,6 +48,11 @@ const scrapeAmazon = async (url) => {
       urls.push("https://www.amazon.com/" + url);
     }
   });
+} catch (error) {
+  console.error(`Error scraping ${url}:`, error);
+  await browser.close();
+  return { error: `Error scraping ${url}: ${error.message}` };
+}
 
   await browser.close();
 
@@ -84,3 +92,22 @@ app.post('/calculate', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+
+async function autoScroll(page){
+  await page.evaluate(async () => {
+      await new Promise((resolve) => {
+          var totalHeight = 0;
+          var distance = 100;
+          var timer = setInterval(() => {
+              var scrollHeight = document.body.scrollHeight;
+              window.scrollBy(0, distance);
+              totalHeight += distance;
+
+              if(totalHeight >= scrollHeight - window.innerHeight){
+                  clearInterval(timer);
+                  resolve();
+              }
+          }, 100);
+      });
+  });
+}
