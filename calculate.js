@@ -20,37 +20,37 @@ const scrapeAmazon = async (url) => {
   const urls = [];
   try {
     const page = await browser.newPage();
-  await page.goto(url);
+    await page.goto(url);
 
-  await autoScroll(page);
+    // await autoScroll(page);
 
-  const html = await page.content();
-  const $ = cheerio.load(html);
+    const html = await page.content();
+    const $ = cheerio.load(html);
 
-  // const prices = [];
-  $('span.a-price').each((index, element) => {
-    const priceText = $(element).find('span').first().text().replace('$', '');
-    prices.push(parseFloat(priceText));
-  });
+    // const prices = [];
+    $('span.a-price').each((index, element) => {
+      const priceText = $(element).find('span').first().text().replace('$', '');
+      prices.push(parseFloat(priceText));
+    });
 
-  // const imageUrls = [];
-  $('#g-items li img').each((index, element) => {
-    const imageUrl = $(element).attr('src');
-    imageUrls.push(imageUrl);
-  });
-  imageUrls.pop();
+    // const imageUrls = [];
+    $('#g-items li img').each((index, element) => {
+      const imageUrl = $(element).attr('src');
+      imageUrls.push(imageUrl);
+    });
+    imageUrls.pop();
 
-  // const titles = [];
-  // const urls = [];
-  $('#g-items li a').each((index, element) => {
-    const title = $(element).attr('title');
-    const url = $(element).attr('href');
-    if (title && !titles.includes(title)) {
-      titles.push(title);
-    }
-    if (url.includes("/dp/") && !urls.includes(url) && !url.includes("_im")) {
-      urls.push("https://www.amazon.com/" + url);
-    }
+    // const titles = [];
+    // const urls = [];
+    $('#g-items li a').each((index, element) => {
+      const title = $(element).attr('title');
+      const url = $(element).attr('href');
+      if (title && !titles.includes(title)) {
+        titles.push(title);
+      }
+      if (url.includes("/dp/") && !urls.includes(url) && !url.includes("_im")) {
+        urls.push("https://www.amazon.com/" + url);
+      }
   });
 } catch (error) {
   console.error(`Error scraping ${url}:`, error);
