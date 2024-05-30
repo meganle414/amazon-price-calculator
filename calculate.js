@@ -51,7 +51,9 @@ const scrapeAmazon = async (url) => {
 } catch (error) {
   console.error(`Error scraping ${url}:`, error);
   await browser.close();
-  return { error: `Error scraping ${url}: ${error.message}` };
+  return { error: `Error scraping ${url}: ${error.message}`, prices: [], imageUrls: [], titles: [], urls: [] };
+} finally {
+  await browser.close();
 }
 
   await browser.close();
