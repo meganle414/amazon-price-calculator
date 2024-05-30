@@ -7,7 +7,13 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 const scrapeAmazon = async (url) => {
-  const browser = await puppeteer.launch();
+  // const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    executablePath: '/app/.apt/usr/bin/google-chrome',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    headless: true,
+    chrome_revision: '125.0.6422.112', // specify the Chrome version
+  });
   const page = await browser.newPage();
   await page.goto(url);
 
