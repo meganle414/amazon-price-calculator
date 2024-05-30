@@ -51,9 +51,9 @@ const scrapeAmazon = async (url) => {
   return { prices, imageUrls, titles, urls };
 };
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'OK' });
-});
+// app.get('/', (req, res) => {
+//   res.status(200).json({ message: 'Ready to calculate' });
+// });
 
 app.post('/calculate', async (req, res) => {
   console.log('Received request: ', req.body);
