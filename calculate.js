@@ -56,14 +56,15 @@ const scrapeAmazon = async (url) => {
   await browser.close();
 }
 
-  await browser.close();
+  // await browser.close();
 
-  return { prices, imageUrls, titles, urls };
+  // return { prices, imageUrls, titles, urls };
+  return { prices: [], imageUrls: [], titles: [], urls: [] };
 };
 
-// app.get('/', (req, res) => {
-//   res.status(200).json({ message: 'Ready to calculate' });
-// });
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Ready to calculate' });
+});
 
 app.post('/calculate', async (req, res) => {
   console.log('Received request: ', req.body);
