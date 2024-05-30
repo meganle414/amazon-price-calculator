@@ -14,6 +14,10 @@ const scrapeAmazon = async (url) => {
     headless: true,
     chrome_revision: '125.0.6422.112', // specify the Chrome version
   });
+  const prices = [];
+  const imageUrls = [];
+  const titles = [];
+  const urls = [];
   try {
     const page = await browser.newPage();
   await page.goto(url);
@@ -23,21 +27,21 @@ const scrapeAmazon = async (url) => {
   const html = await page.content();
   const $ = cheerio.load(html);
 
-  const prices = [];
+  // const prices = [];
   $('span.a-price').each((index, element) => {
     const priceText = $(element).find('span').first().text().replace('$', '');
     prices.push(parseFloat(priceText));
   });
 
-  const imageUrls = [];
+  // const imageUrls = [];
   $('#g-items li img').each((index, element) => {
     const imageUrl = $(element).attr('src');
     imageUrls.push(imageUrl);
   });
   imageUrls.pop();
 
-  const titles = [];
-  const urls = [];
+  // const titles = [];
+  // const urls = [];
   $('#g-items li a').each((index, element) => {
     const title = $(element).attr('title');
     const url = $(element).attr('href');
@@ -58,8 +62,8 @@ const scrapeAmazon = async (url) => {
 
   // await browser.close();
 
-  // return { prices, imageUrls, titles, urls };
-  return { prices: [], imageUrls: [], titles: [], urls: [] };
+  return { prices, imageUrls, titles, urls };
+  // return { prices: [], imageUrls: [], titles: [], urls: [] };
 };
 
 app.get('/', (req, res) => {
